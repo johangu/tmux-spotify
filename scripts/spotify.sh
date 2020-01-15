@@ -20,7 +20,7 @@ next_track() {
 }
 
 toggle_repeat() {
-  if [ "$1" == "true" ]; then
+  if [[ "$1" == "true" ]]; then
     $(osascript -e "tell application \"Spotify\" to set repeating to false")
   else
     $(osascript -e "tell application \"Spotify\" to set repeating to true")
@@ -28,7 +28,7 @@ toggle_repeat() {
 }
 
 toggle_shuffle() {
-  if [ "$1" == "true" ]; then
+  if [[ "$1" == "true" ]]; then
     $(osascript -e "tell application \"Spotify\" to set shuffling to false")
   else
     $(osascript -e "tell application \"Spotify\" to set shuffling to true")
@@ -48,19 +48,19 @@ show_menu() {
   local repeating_label=""
   local shuffling_label=""
 
-  if [ "$is_repeat_on" == "true" ]; then
+  if [[ "$is_repeat_on" == "true" ]]; then
     repeating_label="Turn off repeat"
   else
     repeating_label="Turn on repeat"
   fi
 
-  if [ "$is_shuffle_on" == "true" ]; then
+  if [[ "$is_shuffle_on" == "true" ]]; then
     shuffling_label="Turn off shuffle"
   else
     shuffling_label="Turn on shuffle"
   fi
 
-  if [ "$id" == "" ]; then
+  if [[ "$id" == "" ]]; then
     $(tmux display-menu -T "#[align=centre fg=green]Spotify" -x R -y P \
         "Open Spotify"     o "run -b 'source \"$CURRENT_DIR/spotify.sh\" && open_spotify'" \
         "" \
